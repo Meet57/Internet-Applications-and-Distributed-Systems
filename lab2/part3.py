@@ -1,2 +1,6 @@
 for i in range(15):
-    print("*" + " "*i + "*")
+    s = "*"
+    for j in range(i):
+        s += " "
+    s += "*"
+    print(s)

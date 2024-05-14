@@ -29,6 +29,7 @@ while(1):
         option = int(input("Your option: "))
 
         if option == 4:
+            print("Good Bye!")
             break
         elif option == 1:
             name = input("Enter the name: ")
