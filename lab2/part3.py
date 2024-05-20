@@ -1,6 +1,6 @@
-for i in range(15):
-    s = "*"
+for i in range(7):
+    s = "$"
     for j in range(i):
         s += " "
-    s += "*"
+    s += "$"
     print(s)

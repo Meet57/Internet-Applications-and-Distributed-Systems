@@ -12,11 +12,17 @@ def load_contacts(file_name):
 
 def add_contact(file_name, name, email):
     try:
-        with open(file_name, 'a') as file:
-            file.write("\n")
-            file.write(name + "," + email)
-        contacts[name] = email
-        print("Contact added successfully!")
+        if name not in contacts.keys():
+            with open(file_name, 'a') as file:
+                file.write(name + "," + email + "\n")
+            contacts[name] = email
+            print("Contact added successfully!")
+        else:
+            contacts[name] = email
+            with open(file_name, 'w') as file:
+                for name, email in contacts.items():
+                    file.write(name + "," + email + "\n")
+            print("Contact updated successfully")
     except:
         print("Error opening file")
 
