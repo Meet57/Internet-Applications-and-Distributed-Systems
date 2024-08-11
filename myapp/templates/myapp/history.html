@@ -1,0 +1,24 @@
+{% extends 'myapp/base.html' %}
+
+{% block body_block %}
+    <div class="container mx-auto p-4">
+        <h2 class="text-2xl font-semibold mb-4">All Orders</h2>
+        {% for order in orders %}
+            <div class="bg-gray-100 p-4 rounded shadow-md mb-6">
+                <ul>
+                    <li><strong>Member:</strong> {{ order.member.username }}</li>
+                    <li><strong>Order Type:</strong> {{ order.get_order_type_display }}</li>
+                    <li><strong>Order Date:</strong> {{ order.order_date }}</li>
+                    <li><strong>Total Items:</strong> {{ order.total_items }}</li>
+                    <li><strong>Books:</strong>
+                        <ul class="list-disc pl-5">
+                            {% for book in order.books.all %}
+                                <li>{{ book.title }}</li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

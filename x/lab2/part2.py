@@ -49,7 +49,9 @@ while(1):
                 print("Contact not found")
         elif option == 3:
             for name, email in contacts.items():
-                print("Name:", name, ", Email:", email)
+                #print("Name:", name, ", Email:", email)
+                st = "Name: " + name.upper() + ", Email: " + email.upper()
+                print(st)
         else:
             print("Wrong option try again")
         print()

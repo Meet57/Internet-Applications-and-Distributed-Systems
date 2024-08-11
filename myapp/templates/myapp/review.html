@@ -1,0 +1,28 @@
+{% extends 'myapp/base.html' %}
+
+{% block body_block %}
+    <h1 class="text-3xl font-bold mb-6">Submit a Review</h1>
+    <form method="post" class="bg-white p-6 rounded shadow-md">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="mb-4">
+                <b>{{ field.label_tag }}</b>
+                {{ field }}
+                {% if field.help_text %}
+                    <small class="text-gray-600">{{ field.help_text }}</small>
+                {% endif %}
+                {% if field.errors %}
+                    <div class="text-red-500 text-sm">
+                        {{ field.errors }}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit
+            Review
+        </button>
+    </form>
+    {% if error_message %}
+        <p class="text-red-500 mt-4">{{ error_message }}</p>
+    {% endif %}
+{% endblock %}

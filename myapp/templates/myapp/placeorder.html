@@ -1,0 +1,25 @@
+{% extends 'myapp/base.html' %}
+
+{% block body_block %}
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold mb-6">Place a new order</h1>
+        <form method="post" class="bg-white p-6 rounded shadow-md">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="mb-4">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.help_text %}
+                        <small class="text-gray-600">{{ field.help_text }}</small>
+                    {% endif %}
+                    {% if field.errors %}
+                        <div class="text-red-500 text-sm">
+                            {{ field.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit Order</button>
+        </form>
+    </div>
+{% endblock %}

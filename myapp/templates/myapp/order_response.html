@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Response</title>
+</head>
+<body>
+    <h1>Order Successful</h1>
+    <p>You have successfully ordered the following books:</p>
+    <ul>
+        {% for book in books %}
+            <li>{{ book.title }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'myapp:index' %}">Back to Home</a>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% extends 'myapp/base.html' %}
+
+{% block body_block %}
+    <div class="container mx-auto p-4">
+        {% if message %}11111
+            <p class="mb-4">{{ message }}</p>
+        {% endif %}
+
+        {% if booklist %}
+            <h2 class="text-2xl font-bold mb-4">List of Books</h2>
+            <ol class="list-decimal pl-4">
+                {% for book in booklist %}
+                    <li class="mb-2">
+                    {{ book.title }}
+                    <a href="{% url 'myapp:detail' book.id %}" class="text-blue-500 hover:underline">View Details</a>
+                    |
+                    <a href="{% url 'myapp:chk_reviews' book.id %}" class="text-blue-500 hover:underline">Check Reviews</a>
+                    </li>
+                {% endfor %}
+            </ol>
+        {% else %}
+            <p class="text-xl font-bold text-red-500">There are no available books!</p>
+        {% endif %}
+    </div>
+{% endblock %}

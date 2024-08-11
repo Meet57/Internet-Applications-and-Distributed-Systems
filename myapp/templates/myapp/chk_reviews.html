@@ -1,0 +1,21 @@
+{% extends 'myapp/base.html' %}
+
+{% block body_block %}
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold mb-4">Book Details</h1>
+        <div class="bg-white p-6 rounded shadow-md mb-4">
+            <h2 class="text-xl font-bold">{{ book.title }}</h2>
+            <p class="text-gray-600">Category: {{ book.get_category_display }}</p>
+            <p class="text-gray-600">Publisher: {{ book.publisher.name }}</p>
+            <p class="text-gray-600">Number of Pages: {{ book.num_pages }}</p>
+            <p class="text-gray-600">Price: ${{ book.price }}</p>
+            <p class="text-gray-600">Description: {{ book.description }}</p>
+        </div>
+
+        {% if avg_rating %}
+            <p class="text-xl font-bold mb-4">Average Rating: {{ avg_rating }}</p>
+        {% else %}
+            <p class="text-xl font-bold text-red-500 mb-4">{{ message }}</p>
+        {% endif %}
+    </div>
+{% endblock %}
